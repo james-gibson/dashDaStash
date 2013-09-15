@@ -1,9 +1,10 @@
 var request = require('request');
 var mongojs = require('mongojs');
 var credentials = require('../credentials.json');
-
+var configuration = require('../configuration.json');
 console.log(credentials);
 
+var baseUrl = configuration.baseUrl;
 
 var mongo = {
   "hostname":"localhost",
@@ -41,7 +42,7 @@ var projects = [];
 var getProjects = function(initialValue) {
   request({
       'method': 'GET',
-      'uri': 'https://git.gisinc.com/rest/api/1.0/projects/?limit=100&start='+initialValue,
+      'uri': baseurl+'/rest/api/1.0/projects/?limit=100&start='+initialValue,
       'auth': {
         'user': credentials.user,
         'pass': credentials.password
@@ -96,7 +97,7 @@ iterateProjects = function(incoming) {
 getRepos = function (projectKey) {
   request({
     'method':'GET',
-    'uri':'https://git.gisinc.com/rest/api/1.0/projects/'+projectKey+'/repos',
+    'uri': baseUrl+'/rest/api/1.0/projects/'+projectKey+'/repos',
     'auth': {
         'user': credentials.user,
         'pass': credentials.password
@@ -143,7 +144,7 @@ processCommits = function(incoming) {
 getCommits = function(projectKey,repoSlug, initialValue) {
   request({
       'method': 'GET',
-      'uri': 'https://git.gisinc.com/rest/api/1.0/projects/' + projectKey + '/repos/' +repoSlug + '/commits?limit=100&tart='+initialValue,
+      'uri': baseUrl+'/rest/api/1.0/projects/' + projectKey + '/repos/' +repoSlug + '/commits?limit=100&tart='+initialValue,
       'auth': {
         'user': credentials.user,
         'pass': credentials.password
