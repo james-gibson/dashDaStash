@@ -1,1 +1,7 @@
 credentials.json
+etl/node_modules
+server/node_modules
+
+
+*.swp
+*.swo
