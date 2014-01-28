@@ -33,8 +33,8 @@ var options = {
   host: 'https://git.gisinc.com',
   path: '/rest/api/1.0/users',
   headers: {
-    'User': 'jgibson',
-    'Password': 'gKathrynHoltan512i',
+    'User': 'username',
+    'Password': 'password',
     'Content-Type': 'application/json'
   }
 }
